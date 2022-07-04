@@ -1,5 +1,8 @@
-﻿using FinalCRUD.EmployeeData;
+﻿using FinalCRUD.AuthManagers;
+using FinalCRUD.EmployeeData;
 using FinalCRUD.Models;
+using FinalCRUD.Userservice;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalCRUD.Controllers
@@ -8,13 +11,16 @@ namespace FinalCRUD.Controllers
     public class EmployeesController : ControllerBase
     {
         private IEmployeeData _employeeData;
+        private readonly JwtAuthManager jwtAuthManager;
 
-        public EmployeesController(IEmployeeData employeeData)
+
+        public EmployeesController(IEmployeeData employeeData, JwtAuthManager jwtAuthManager)
         {
             _employeeData = employeeData;
+            this.jwtAuthManager = jwtAuthManager;
         }
 
-
+        [Authorize]
         [HttpGet]
         [Route("api/[controller]")]
 
@@ -23,6 +29,8 @@ namespace FinalCRUD.Controllers
             return Ok(_employeeData.GetEmployees());
         }
 
+
+        [Authorize]
         [HttpGet]
         [Route("api/[controller]/{id}")]
 
@@ -36,6 +44,9 @@ namespace FinalCRUD.Controllers
             return NotFound($"Employee with id: {id} was not found");
         }
 
+
+
+        [Authorize]
         [HttpPost]
         [Route("api/[controller]")]
 
@@ -45,6 +56,9 @@ namespace FinalCRUD.Controllers
             return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + employee.Id, employee);
         }
 
+
+
+        [Authorize]
         [HttpDelete]
         [Route("api/[controller]/{id}")]
 
@@ -59,6 +73,9 @@ namespace FinalCRUD.Controllers
             return NotFound($"Employee with id: {id} was not found");
         }
 
+
+
+        [Authorize]
         [HttpPatch]
         [Route("api/[controller]/{id}")]
 
@@ -73,5 +90,18 @@ namespace FinalCRUD.Controllers
             }
             return NotFound($"Employee with id: {id} was not found");
         }
+
+
+        [HttpPost("authorize")]
+        public IActionResult AuthUser([FromBody] User user)
+        {
+            var token = jwtAuthManager.authenticate(user.Username!, user.Password!);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            return Ok(token);
+        }
+
     }
 }
