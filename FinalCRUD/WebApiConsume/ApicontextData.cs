@@ -1,12 +1,15 @@
-﻿using System.Net.Http.Headers;
+﻿using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace FinalCRUD.WebApiConsume
 {
     public class ApisContextData : IWebapi
     {
+        public HttpClient client;
         public ApisContextData()
         {
-
+            client = new HttpClient();
         }
 
         public async Task<List<Telcos>> GetallTelcosc()
@@ -24,7 +27,20 @@ namespace FinalCRUD.WebApiConsume
             }
             return telcos;
         }
+        public Telcos AddTelcos(Telcos telcos)
+        {
+            Telcos telcoss = new Telcos();
+            string data = JsonConvert.SerializeObject(telcos);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage msg = client.PostAsync(client.BaseAddress, content).Result;
+            if (msg.IsSuccessStatusCode)
+            {
+                return telcos;
+            }
+            return telcoss;
 
+
+        }
 
     }
 }
