@@ -1,8 +1,7 @@
-﻿using FinalCRUD.AuthManagers;
-using FinalCRUD.EmployeeData;
-using FinalCRUD.Models;
+﻿using BusinessLogic.EmployeeData.Interfaces;
+using BusinessLogic.Models;
+using FinalCRUD.AuthManagers;
 using FinalCRUD.Userservice;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalCRUD.Controllers
@@ -20,7 +19,7 @@ namespace FinalCRUD.Controllers
             this.jwtAuthManager = jwtAuthManager;
         }
 
-        [Authorize]
+        //   [Authorize]
         [HttpGet]
         [Route("api/[controller]")]
 
@@ -30,7 +29,7 @@ namespace FinalCRUD.Controllers
         }
 
 
-        [Authorize]
+        //   [Authorize]
         [HttpGet]
         [Route("api/[controller]/{id}")]
 
@@ -46,7 +45,7 @@ namespace FinalCRUD.Controllers
 
 
 
-        [Authorize]
+        // [Authorize]
         [HttpPost]
         [Route("api/[controller]")]
 
@@ -58,10 +57,9 @@ namespace FinalCRUD.Controllers
 
 
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete]
         [Route("api/[controller]/{id}")]
-
         public IActionResult DeleteEmployee(Guid id)
         {
             var employee = _employeeData.GetEmployee(id);
@@ -75,10 +73,9 @@ namespace FinalCRUD.Controllers
 
 
 
-        [Authorize]
+        // [Authorize]
         [HttpPatch]
         [Route("api/[controller]/{id}")]
-
         public IActionResult UpdateEmployee(Guid id, Employee employee)
         {
             var existingEmployee = _employeeData.GetEmployee(id);

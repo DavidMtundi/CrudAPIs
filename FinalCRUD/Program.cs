@@ -1,6 +1,7 @@
+using BusinessLogic.EmployeeData.Interfaces;
+using BusinessLogic.EmployeeData.SqlDataClasses;
+using BusinessLogic.Models;
 using FinalCRUD.AuthManagers;
-using FinalCRUD.EmployeeData;
-using FinalCRUD.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -15,8 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-////this is for the authorization
-///
+//this is for the authorization
+
 
 var key = "123456789987654321";
 builder.Services.AddAuthentication(x =>
@@ -37,7 +38,7 @@ builder.Services.AddAuthentication(x =>
 });
 builder.Services.AddSingleton<JwtAuthManager>(new JwtAuthManager(key));
 builder.Services.AddScoped<IEmployeeData, SqlEmployeeData>();
-////
+//TODO: i shouldn't assign the business logic to the start, how will i manage this error
 builder.Services.AddDbContextPool<EmployeeContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeContextConnectionString"), sqlServerOptionsAction: sqlOptions =>
     {

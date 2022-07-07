@@ -1,0 +1,15 @@
+C:\Users\Mtundi\source\repos\Tutorials\bin\Debug\net6.0\Tutorials.exe
+C:\Users\Mtundi\source\repos\Tutorials\bin\Debug\net6.0\Tutorials.deps.json
+C:\Users\Mtundi\source\repos\Tutorials\bin\Debug\net6.0\Tutorials.runtimeconfig.json
+C:\Users\Mtundi\source\repos\Tutorials\bin\Debug\net6.0\Tutorials.dll
+C:\Users\Mtundi\source\repos\Tutorials\bin\Debug\net6.0\Tutorials.pdb
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.csproj.AssemblyReference.cache
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.AssemblyInfoInputs.cache
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.AssemblyInfo.cs
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.csproj.CoreCompileInputs.cache
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.dll
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\refint\Tutorials.dll
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.pdb
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\Tutorials.genruntimeconfig.cache
+C:\Users\Mtundi\source\repos\Tutorials\obj\Debug\net6.0\ref\Tutorials.dll
