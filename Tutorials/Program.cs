@@ -9,6 +9,7 @@ start:
 Console.WriteLine("Enter a valid Name");
 //receive the string name
 var name = Console.ReadLine();
+//hey
 while (!Validate.CheckIfNameIsValid(name!.Trim()))
 {
     //start afresh
@@ -21,6 +22,13 @@ next:
 Console.WriteLine("Enter a valid Age");
 
 var enteredage = Console.ReadLine();
+//do
+//{
+//    Console.WriteLine("Enter a valid Age");
+
+//     enteredage = Console.ReadLine();
+//} while (!Validate.CheckIfNameIsValid(enteredage!.ToString()));
+
 while (!Validate.CheckIfAgeIsValid(enteredage!.ToString()))
 {
     goto next;
